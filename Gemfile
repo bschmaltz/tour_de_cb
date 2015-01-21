@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.1.2"
 gem 'rails', '4.0.2'
 gem 'activerecord-session_store'
 
@@ -14,7 +14,8 @@ end
 
 group :production do
   #gem 'mysql2'
-  #gem 'unicorn'
+  gem 'rack-timeout'
+  gem 'unicorn'
   gem 'pg'
   gem 'thin'
   gem 'rails_12factor'
