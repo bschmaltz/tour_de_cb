@@ -15,7 +15,7 @@ end
 group :production do
   #gem 'mysql2'
   gem 'rack-timeout'
-  gem 'unicorn'
+  #gem 'unicorn'
   gem 'pg'
   gem 'thin'
   gem 'rails_12factor'
