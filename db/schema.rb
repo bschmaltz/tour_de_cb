@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122143132) do
+ActiveRecord::Schema.define(version: 20150121080729) do
+
+  create_table "current_race_updates", force: true do |t|
+    t.integer  "uid"
+    t.integer  "rid"
+    t.float    "distance"
+    t.float    "game_time"
+    t.float    "speed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lobbies", force: true do |t|
     t.string   "name"
@@ -25,6 +35,26 @@ ActiveRecord::Schema.define(version: 20140122143132) do
   end
 
   add_index "lobbies", ["name"], name: "index_lobbies_on_name", unique: true
+
+  create_table "race_summaries", force: true do |t|
+    t.integer  "uid"
+    t.integer  "rid"
+    t.integer  "place"
+    t.float    "time"
+    t.float    "distance"
+    t.float    "calories"
+    t.string   "map"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "races", force: true do |t|
+    t.integer  "lid"
+    t.integer  "rid"
+    t.datetime "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

@@ -3,11 +3,13 @@
 one:
   uid: 1
   rid: 1
-  update_time: 2014-01-24 14:09:12
   distance: 1.5
+  game_time: 2015-01-21 03:07:12
+  speed: 1.5
 
 two:
   uid: 1
   rid: 1
-  update_time: 2014-01-24 14:09:12
   distance: 1.5
+  game_time: 2015-01-21 03:07:12
+  speed: 1.5

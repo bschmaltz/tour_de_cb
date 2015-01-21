@@ -4,12 +4,16 @@ one:
   uid: 1
   rid: 1
   place: 1
-  time: MyString
+  time: 1.5
   distance: 1.5
+  calories: 1.5
+  map: MyString
 
 two:
   uid: 1
   rid: 1
   place: 1
-  time: MyString
+  time: 1.5
   distance: 1.5
+  calories: 1.5
+  map: MyString

@@ -214,6 +214,7 @@ $(function() {
 				$(document.getElementById(data.email)).children().last().remove();
 				if(data.email==user_email){
 					points = [];
+					console.log(data.points);
 					for(var i=1; i<data.points.length; i++){
 						points.push([data.points[i].game_time, Math.round(((data.points[i].distance-data.points[i-1].distance)/(data.points[i].game_time-data.points[i-1].game_time))*2.23694*100)/100])
 					}

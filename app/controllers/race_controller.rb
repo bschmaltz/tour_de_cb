@@ -63,11 +63,11 @@ class RaceController < WebsocketRails::BaseController
         lastUpdate = CurrentRaceUpdate.where("uid = ? AND rid = ?", user.id, race.id).order("created_at").last()
         new_distance = message[:update_distance]+lastUpdate.distance
         time = Time.now()-race.created_at
-        CurrentRaceUpdate.create(uid: user.id, rid: race.id, distance: new_distance, game_time: time, speed: (((new_distance-lastUpdate.distance)/(time-lastUpdate.game_time)*223.694).round)/100)
+        CurrentRaceUpdate.create(uid: user.id, rid: race.id, distance: new_distance, game_time: time, speed: (((new_distance-lastUpdate.distance)/(time-(lastUpdate.game_time || 0))*223.694).round)/100)
         end_dist = 100
 
         if lobby.map=='Demo'
-          end_dist = 2140
+          end_dist = 2137
         elsif lobby.map=='First Map'
           end_dist = 102139
         elsif lobby.map=='Merica'
