@@ -1,0 +1,42 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+#lobby{
+    position: absolute;
+    z-index: 5;
+    left: 0px;
+    top: 51px;
+    width: 100%;
+    height: calc(100% - 51px);
+    background-color: #FFF;
+}
+#map {
+    width: 313px;
+    height: 250px;
+    position: absolute;
+    top: 51px;
+    left:0px;
+}
+#pan{
+    width: 100%;
+    height: calc(100% - 51px);
+    position: absolute;
+    top: 51px;
+    left:0px;
+    z-index: -1;
+}
+#input{
+    position: absolute;
+    z-index: 4;
+    right: 10px;
+}

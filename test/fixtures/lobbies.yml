@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  limit: 1
+  password: MyString
+  racing: false
+  map: MyString
+  host: MyString
+
+two:
+  name: MyString
+  limit: 1
+  password: MyString
+  racing: false
+  map: MyString
+  host: MyString

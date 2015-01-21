@@ -1,0 +1,15 @@
+#lobby-form
+	.page-header
+		%h1 Create a new game
+	= form_for :new_lobby, url: :create_lobby do |form|
+		.lobby-input
+			= label_tag(:name, "Name")
+			= form.text_field :name
+		.lobby-input
+			= label_tag(:map, "Map")
+			= form.select :map, ["Demo", "First Map", "Time Square", "Merica"]
+		.lobby-input
+			= label_tag(:limit, "Max Players")
+			= form.select :limit, (1..16)
+		= form.submit 'Create', class: "btn btn-large btn-primary"
+	#map-prev

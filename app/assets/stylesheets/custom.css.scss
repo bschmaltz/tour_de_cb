@@ -1,0 +1,484 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+$grayLight: #999;
+$grayMediumLight: #eaeaea;
+$grayDarker: #efefef;
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.flash{
+	margin-left: 40px;
+	margin-right: 40px;
+}
+#flash_success{
+	color:#3c763d;
+}
+#flash_fail, #login-fail, #register-fail{
+	color:#a94442;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 2.5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 2.4em;
+  color: white;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: lighter;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+	font-weight: 300;
+}
+
+/* Login */
+#bg {
+  position: fixed; 
+  top: -40%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+#bg img {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 40%;
+}
+
+#forms{
+	position: absolute;
+	width: 600px;
+	top: 80px;
+	right: 50px;
+}
+
+#login-form{
+	border:1px solid rgba(0, 0, 0, 0.25);
+	border-radius:5px;
+
+	padding: 20px;
+	margin-bottom: 20px;
+	background: rgb(238, 238, 238);
+	background: rgba(238, 238, 238, 0.75);
+
+	h1{
+		font-size: 52px;
+	}
+	p{
+		font-size: 1.45em;
+		line-height: 1.2em;
+	}
+	a{
+		font-weight: bold;
+	}
+}
+
+#register-form{
+	border:1px solid rgba(0, 0, 0, 0.25);
+	border-radius:5px;
+	padding: 20px;
+	width: 227px;
+	float: right;
+	background: rgb(238, 238, 238);
+	background: rgba(238, 238, 238, 0.75);
+
+	#register{
+		padding-top: 5px;
+	}
+	#regtit{
+		color: #888;
+	}
+	#new_user_email{
+		margin-top: 3px;
+	}
+	p{
+		font-size: 1.45em;
+		line-height: 1.2em;
+	}
+	input{
+		margin-bottom: 5px;
+	}
+	#new_user_password_confirmation{
+		margin-bottom: 8px;
+	}
+}
+
+/* static pages */
+
+#head-title{
+	margin-right: 40px;
+	margin-left: 40px;
+	h1{
+		margin-bottom: 0.5em;
+		line-height: 0.3em;
+	}
+}
+
+#help-text{
+	h2{
+		font-size: 1.5em;
+	}
+	p{
+		margin-left: 20px
+	}
+	margin-right: 40px;
+	margin-left: 40px;
+}
+
+#about-text{
+	margin-right: 40px;
+	margin-left: 40px;
+}
+
+/*Profile page*/
+#user-content{
+	margin-right: 40px;
+	margin-left: 40px;
+	h1{
+		margin-bottom: 0.5em;
+		line-height: 0.3em;
+	}
+	#user-pic{
+		width: 205px;
+		height: 205px;
+		background-color: #eee;
+		float: left;
+		margin-right: 30px;
+	}
+}
+
+#lobby-content{
+	margin-right: 40px;
+	margin-left: 40px;
+}
+.well{
+	margin-top: 10px;
+	margin-bottom: 40px;
+	#fields{
+		position: relative;
+		top: 2px;
+	}
+	.search-param{
+		margin-left: 10px;
+	}
+	#create-lobby{
+		float: right;
+		padding-top: 5px;
+	}
+}
+#user-history{
+	margin-top: 70px;
+	clear: both;
+}
+
+.race-stat-left{
+	float: left;
+	margin-bottom: 20px;
+}
+.race-stat-right{
+	float: left;
+	margin-left: 50px;
+}
+.medals-element{
+	float: left;
+}
+#badges{
+	float: left;
+}
+#gold-medal {
+    background: #f9c933;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 3px;
+}
+#silver-medal {
+    background: #c5c5c5;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 3px;
+}
+#bronze-medal {
+    background: #c5996b;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 3px;
+}
+
+/*create lobby page */
+#lobby-form{
+	margin-right: 40px;
+	margin-left: 40px;
+	h1{
+		margin-bottom: 0.5em;
+		line-height: 0.3em;
+	}
+	.lobby-input{
+		margin-bottom: 2px;
+	}
+	form{
+		position: absolute;
+		margin: 20px;
+		padding: 15px;
+		background: rgb(238, 238, 238);
+		background: rgba(238, 238, 238, 0.75);
+		border:1px solid rgba(0, 0, 0, 0.25);
+		border-radius:5px;
+	}
+	.btn{
+		margin-top: 5px;
+	}
+	#map-prev{
+		position: absolute;
+		z-index: -1;
+		width: 80%;
+		width: calc(100% - 80px);
+		height: 70%;
+		height: calc(100% - 200px);
+		background-color: #f0f0f0;
+	}
+}
+
+/* game lobby */
+#players{
+	position: absolute;
+	right: 40px;
+	top: 22px;
+	width: 275px;
+	.player_tag, .open_player_slot{
+		margin-top: 5px;
+		padding: 4px;
+		height: 30px;
+		color: #FFF;
+	}
+	.player_tag{
+		background-color: #428bca;
+	}
+	.open_player_slot{
+		background-color: #BDBDBD;
+	}
+	.waiting_gif{
+		position:relative;
+		float: left;
+		margin-right: 3px;
+	}
+}
+#edit{
+	position: absolute;
+	left: 40px;
+	top: 60px;
+	width: 250px;
+	margin: 20px;
+	padding: 15px;
+	background: rgb(238, 238, 238);
+	background: rgba(238, 238, 238, 0.9);
+	border:1px solid rgba(0, 0, 0, 0.25);
+	border-radius:5px;
+}
+#info{
+	position: absolute;
+	left: 40px;
+	top: 60px;
+	width: 250px;
+	margin: 20px;
+	padding: 15px;
+	padding-top: 10px;
+	background: rgb(238, 238, 238);
+	background: rgba(238, 238, 238, 0.9);
+	border:1px solid rgba(0, 0, 0, 0.25);
+	border-radius:5px;
+}
+#lobby-map{
+	position: absolute;
+	left: 40px;
+	top: 60px;
+	width: calc(100% - 400px);
+	height: calc(100% - 111px);
+}
+
+#lobby-name{
+	position: absolute;
+	left: 40px;
+	top: 8px;
+	width: 800px;
+	width: calc(100% - 500px);
+	h1{
+		margin-bottom: 0.5em;
+		line-height: 0.3em;
+	}
+}
+
+#controls{
+	position: absolute;
+	bottom: 30px;
+	right: 40px;
+}
+
+.player_name_added{
+	position: relative;
+	left: 4px;
+}
+
+.glyphicon-road{
+	float: right;
+	margin-right: 10px;
+	margin-top: 3px;
+}
+#finish_summary{
+	margin-left: 30px;
+}
+#stat-left{
+	float: left;
+	margin-bottom: 20px;
+}
+#stat-right{
+	float: left;
+	margin-left: 50px;
+}
+#container{
+	clear: left;
+	margin-bottom: -30px;
+}
+#input{
+	position: absolute;
+	left: 0px;
+	top: 300px;
+}
+#hud{
+	color: #FFF;
+	right: 30px;
+	font-size: 20px;
+	margin-top: 30px;
+	text-align: right;
+	font-weight: 100;
+	background: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.25);
+	padding: 10px;
+	position: absolute;
+	right: 5px;
+	bottom: 18px;
+}
+
+#chat{
+	position: absolute;
+	z-index: 6;
+	bottom: 0px;
+	left: 0px;
+	height: 175px;
+	width: 550px;
+	/*width: calc(100% - 400px);*/
+	.btn{
+		color: #eee;
+		background-color: #555;
+		height: 30px;
+		width: 30px;
+		padding: 5px;
+	}
+}
+#chat-messages{
+	background: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.85);
+	position: absolute;
+	width: 100%;
+	height: 140px;
+	padding: 10px;
+	padding-bottom: 0px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.chat-message{
+	color: #FEFEFE;
+	margin-bottom: -10px;
+	width: 100%;
+}
+#chat-input{
+	width: 100%;
+	height: 36px;
+	background: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.85);
+	position: absolute;
+	padding-top: 3px;
+	bottom: 0px;
+	left: 0px;
+	input{
+		width: 91.5%;
+		width: calc(100% - 46px);
+	}
+}
+#chat-input-text{
+	margin-left: 5px;
+}
+#chat-input-btn{
+	margin-bottom: 3px;
+	margin-left: 2px;
+}
+
+/*======= Map Styling ============*/
+.gmnoprint a, .gmnoprint span {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
+#GMapsID div div a div img{
+    display:none;
+}

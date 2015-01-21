@@ -1,0 +1,60 @@
+#user-content
+	.page-header#user-email
+		%h1#email
+			= session[:user][:email]
+	#user-stats
+		%img{id: "user-pic", src: ""}
+		#race-record
+			%h3 Racing Stats
+			%p
+				Total Distance Travelled: 
+				= "#{((@races.sum('distance')*100).round)/100.0} miles"
+			%p
+				Top Speed: 
+				= "#{} mph"
+			%p
+				Fastest Mile:
+				= "#{} minutes"
+			%p
+				Total Races:
+				= "#{@races.count}"
+			%p
+				Secret Key:
+				= "#{@user.secret_key}"
+		#badges
+			.medals-element
+				Badges:
+			#gold-medal.medals-element
+			%span#gold-medal-count.medals-element
+				= "#{@races.where('place = ?', 1).count}"
+			#silver-medal.medals-element
+			%span#silver-medal-count.medals-element
+				= "#{@races.where('place = ?', 2).count}"
+			#bronze-medal.medals-element
+			%span#bronze-medal-count.medals-element
+				= "#{@races.where('place = ?', 3).count}"
+	#user-history
+		%h3 Race History
+		- @races.each do |race|
+			.panel.panel-default
+				.panel-heading
+					%h3.panel-title
+						= race.created_at.to_date
+				.panel-body
+					%span{class: "race-stat-left"}
+						- if race.place==0
+							= "Place: DNF"
+						- else
+							%input{class: "place", type: 'hidden', value: "#{race.place}"}
+						%br
+						= "Distance: "+(((race.distance*100).round)/100.0).to_s+" miles"
+						%br
+						%input{class: "time", type: 'hidden', value: "#{race.time}"}
+					%span{class: "race-stat-right"}
+						= "Average Speed: "+(((race.distance/race.time*3600)*100).round/100.0).to_s+" mph"
+						%br
+						= "Est. Calories Burned: "+ race.calories.to_s
+						%br
+						%span#race-map
+							= "Map: "+ race.map
+		= will_paginate @races

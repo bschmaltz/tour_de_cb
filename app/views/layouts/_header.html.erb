@@ -1,0 +1,21 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "TourDeCB", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav pull-right">
+        	<% if session[:user].nil? %>
+	          <li><%= link_to "Home", root_path %></li>
+	          <li><%= link_to "Help", :help %></li>
+	          <li><%= link_to "About", :about %></li>
+	        <% else %>
+	          <li><%= link_to "Races", :view_lobbies %></li>
+	          <li><%= link_to "Profile", :profile %></li>
+	          <li><%= link_to "Help", :help %></li>
+	          <li><%= link_to "Logout", :logout %></li>
+	        <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

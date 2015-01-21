@@ -1,0 +1,131 @@
+.modal.fade#finishModal{tabindex: "-1", role: "dialog", aria: {labelledby: "myModalLabel"}, aria: {hidden: "true"}}
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%h4.modal-title#finishModalLabel
+					Your Race Summary
+			.modal-body
+				#finish_summary
+				#container{style: "width:520px; height:320px;"}
+			.modal-footer
+				%button{type: "button", class: "btn btn-default", data: {dismiss: "modal"}} Close
+.modal.fade#endModal{tabindex: "-1", role: "dialog", aria: {labelledby: "myModalLabel"}, aria: {hidden: "true"}}
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%h4.modal-title#endModalLabel GAME OVER, MAN! GAME OVER!
+			.modal-body
+				%table.table.table-hover
+					%thead
+						%th Place
+						%th Name
+						%th Time
+					%tbody#scoreboard
+			.modal-footer
+				%button{type: "button", class: "btn btn-default", data: {dismiss: "modal"}} Close
+#chat
+	#chat-messages
+	#chat-input
+		%input#chat-input-text{type: "text", maxlength: "120"}
+		%button#chat-input-btn{type: "button", class: "btn btn-small"}
+			%span{class: "glyphicon glyphicon-comment"}
+#lobby
+	#lobby-name
+		%h1 
+			= @lobby.name
+	#lobby-map
+	#edit
+		%h4 Race Info
+		#edit-map
+			%label Map 
+			%select{id: "edit_lobby_map"}
+				%option{value: "Demo"} Demo
+				%option{value: "First Map"} First Map
+				%option{value: "Time Square"} Time Square
+				%option{value: "Merica"} Merica
+		#edit-limit
+			%label Max Players 
+			%select{id: "edit_limit"}
+				%option{value: "1"} 1
+				%option{value: "2"} 2
+				%option{value: "3"} 3
+				%option{value: "4"} 4
+				%option{value: "5"} 5
+				%option{value: "6"} 6
+				%option{value: "7"} 7
+				%option{value: "8"} 8
+				%option{value: "9"} 9
+				%option{value: "10"} 10
+				%option{value: "11"} 11
+				%option{value: "12"} 12
+				%option{value: "13"} 13
+				%option{value: "14"} 14
+				%option{value: "15"} 15
+				%option{value: "16"} 16
+	#info
+		%h4 Race Info
+		#info-host
+			= "Host: #{@lobby.host}"
+		#info-map
+			= "Map: #{@lobby.map}"
+		#info-players
+			= "Players: #{@other_players_email.length+1}/#{@lobby.limit}"
+	#players
+		%h4 Players
+		#player_list
+			- @other_players_email.each do |other_player|
+				%div{id: other_player, class: "player_tag"}
+					%img{class: "player_pic", src: ""}
+					%span{class: "player_name"}
+						= other_player
+			%div{id: session[:user][:email], class: "player_tag"}
+				%img{class: "player_pic", src: ""}
+				%span{class: "player_name"}
+					= session[:user][:email]
+			- i=@lobby.limit-1-@other_players_email.length
+			- while i>0 do
+				.open_player_slot
+					%div{id: "waiting_#{@lobby.limit-i}", class: "waiting_gif"}
+					Waiting for player...
+				- i=i-1
+	#stats
+	#controls
+		- if @lobby.host==session[:user][:email]
+			%input{id: "end_race_btn", class: "btn btn-large btn-primary", type:"submit", value:"End Race"}
+			- if @lobby_racing
+				%input{id: "lobby_btn", class: "btn btn-large btn-primary", type:"submit", value:"Race"}
+			- else
+				%input{id: "lobby_btn", class: "btn btn-large btn-primary", type:"submit", value:"Start Game"}
+		- else
+			- if @lobby_racing
+				%input{id: "lobby_btn", class: "btn btn-large btn-primary", type:"submit", value:"Race"}
+			- else
+				%input{id: "lobby_btn", class: "btn btn-large btn-primary", type:"submit", value:"Waiting for host..."}
+#game
+	#input
+		%input{id: 'dist', type: 'text', placeholder: 'move (meters)'}
+		%input{id: 'update_dist', type: 'submit'}
+		%input{id: 'email', type: 'hidden', value: "#{session[:user][:email]}"}
+		%input{id: 'start', type: 'hidden', value: "#{@user_start}"}
+		- if @lobby_racing
+			%input{id: 'time', type: 'hidden', value: "#{Time.now-@race.created_at}"}
+		%input{id: 'other_emails', type: 'hidden', value: "#{@other_players_email}"}
+		%input{id: 'other_starts', type: 'hidden', value: "#{@other_players_start}"}
+		%input{id: 'other_statuses', type: 'hidden', value: "#{@other_players_status}"}
+		%input{id: 'lobby_id', type: 'hidden', value: "#{@lobby.id}"}
+		%input{id: 'lobby_host', type: 'hidden', value: "#{@lobby.host}"}
+		%input{id: 'map_name', type: 'hidden', value: "#{@lobby.map}"}
+		%input{id: 'limit', type: 'hidden', value: "#{@lobby.limit}"}
+		%input{id: 'lobby_racing', type: 'hidden', value: "#{@lobby_racing}"}
+		%input{id: 'user_racing', type: 'hidden', value: "#{@user_racing}"}
+	#hud
+		#clock
+			00:00:00.00
+		#distance
+			0.00 Miles
+		#speed
+			0.00 mph
+		#place
+			\-
+	#map
+	#pan

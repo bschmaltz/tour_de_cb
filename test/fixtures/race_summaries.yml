@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: 1
+  rid: 1
+  place: 1
+  time: MyString
+  distance: 1.5
+
+two:
+  uid: 1
+  rid: 1
+  place: 1
+  time: MyString
+  distance: 1.5

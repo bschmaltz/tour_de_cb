@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TourDeCb</title>
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<script type="text/javascript">
+		wsUrl = '<%= websocket_url.sub('http://', '') %>'; 
+	</script>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'layouts/header' %>
+<% flash.each do |name, msg| %>
+	<%= content_tag :div, msg, :id => "flash_#{name}", :class => "flash" %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

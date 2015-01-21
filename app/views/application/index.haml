@@ -1,0 +1,33 @@
+#bg
+	%img{src: "images/bg1.jpg"}
+#overlay
+	#forms
+		#login-form
+			%h1 Welcome to Tour de CB!
+			%p Race fellow desk cyclist on courses around the world using Google Maps.
+			- flash.each do |name, msg|
+				- if "#{msg}" == 'Your username/password combination are incorrect.'
+					#login-fail
+						= msg
+			= form_for :login, url: '/user/login' do |form|
+				%span#fields
+					= form.email_field :email, placeholder: 'Email'
+					= form.password_field :password, placeholder: 'Password'
+				= form.submit 'Login', class: "btn btn-large btn-primary"
+		#register-form
+			%p New to Tour de CB?
+			#register
+				%span#regtit Sign up
+				%br
+				- flash.each do |name, msg|
+					- if "#{msg}" != 'Your username/password combination are incorrect.'
+						#register-fail
+							= msg
+				= form_for :new_user, url: 'user/register' do |form|
+					= form.email_field :email, placeholder: 'Email'
+					%br
+					= form.password_field :password, placeholder: 'Password'
+					%br
+					= form.password_field :password_confirmation, placeholder: 'Confirm Pass'
+					%br
+					= form.submit 'Register', class: "btn btn-large btn-primary"

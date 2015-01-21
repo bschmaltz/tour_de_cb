@@ -1,0 +1,45 @@
+#lobby-content
+	.well.well-sm
+		#search-options
+			= form_for :search, url: :search_lobbies do |form|
+				%span#fields
+					%span.search-param
+						= label_tag(:name, "Name")
+						= form.text_field :name
+					%span.search-param
+						= label_tag(:min, "Min Players")
+						= form.select :min, (1..15)
+					%span.search-param
+						= form.submit 'Search', class: "btn btn-large btn-primary"
+				= link_to "Create New Lobby", :new_lobby, id: "create-lobby" 
+	%table.table.table-hover
+		%thead
+			%th #
+			%th Name
+			%th Map
+			%th Players
+			%th In Progress?
+			%th Host
+		%tbody
+			- lobby_index = 0
+			- result_num = 0
+			- @lobbies.each do |lobby|
+				- if @min <= @player_count[lobby_index] && @player_count[lobby_index]>0
+					- result_num = result_num+1
+					%tr{id: "#{lobby.id}", class: "lobby_result"}
+						%td
+							= result_num
+						%td
+							= lobby.name
+						%td
+							= lobby.map
+						%td
+							= "#{@player_count[lobby_index]}/#{lobby.limit}"
+						%td
+							- if Race.where("lid = ? AND end_time is ?", lobby.id, nil).first!=nil
+								yes
+							- else
+								no
+						%td
+							= lobby.host
+				- lobby_index = lobby_index + 1
