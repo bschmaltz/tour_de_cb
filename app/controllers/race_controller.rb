@@ -108,7 +108,7 @@ class RaceController < WebsocketRails::BaseController
           #user is not done, just update position
           #get standings
           num_done = RaceSummary.where("rid = ? AND place != ?", race.id, 0).count
-          racer_distances = CurrentRaceUpdate.where(race.id).group("uid").maximum("distance").sort_by{|k,v| v}
+          racer_distances = CurrentRaceUpdate.where("rid = ?", race.id).group("uid").maximum("distance").sort_by{|k,v| v}
           standings = []
           p=1+num_done
           i=racer_distances.length-1
