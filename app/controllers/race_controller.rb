@@ -69,9 +69,9 @@ class RaceController < WebsocketRails::BaseController
         if lobby.map=='Demo'
           end_dist = 2137
         elsif lobby.map=='First Map'
-          end_dist = 102139
+          end_dist = 101640
         elsif lobby.map=='Merica'
-          end_dist = 3603573
+          end_dist = 3534480
         elsif lobby.map=='Time Square'
           end_dist = 17949
         end
