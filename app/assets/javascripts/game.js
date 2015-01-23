@@ -155,7 +155,7 @@ $(function() {
 				if(data.host_name!=$("#lobby_host").attr("value")){
 					$("#lobby_host").attr("value", data.host_name);
 					if(user_email==data.host_name && !racing){
-						$("#lobby_btn").attr("value", "Start Game");
+						$("#lobby_btn").attr("value", "Start Race");
 					}
 				}
 			}
@@ -333,7 +333,7 @@ $(function() {
 
 		});
 		$("#lobby_btn").click(function(){
-			if($("#lobby_host").attr("value")==user_email &&  $("#lobby_btn").attr("value")=="Start Game"){
+			if($("#lobby_host").attr("value")==user_email &&  $("#lobby_btn").attr("value")=="Start Race"){
 				dispatcher.trigger('start_race.start', {id: 'blank'});
 			}else{
 				if($("#lobby_btn").attr("value")=="Race"){
@@ -480,7 +480,7 @@ $(function() {
 			$("#end_race_btn").hide();
 			$(".glyphicon").remove();
 			if(user_email==$("#lobby_host").val()){
-				$("#lobby_btn").attr("value", "Start Game");
+				$("#lobby_btn").attr("value", "Start Race");
 				$("#info").hide();
 				$("#edit").show();
 			}else{
@@ -522,7 +522,7 @@ $(function() {
 					$("#info").hide();
 					$("#edit").show();
 					$("#end_race_btn").hide();
-					$("#lobby_btn").attr("value", "Start Game");
+					$("#lobby_btn").attr("value", "Start Race");
 				}
 			}
 		});
